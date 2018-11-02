@@ -1,0 +1,71 @@
+/*
+* @Author: h_yajie
+* @Date:   2016-08-23 11:24:22
+* @Last Modified by:   h_yajie
+* @Last Modified time: 2016-08-24 09:54:37
+*/
+body{
+    background-image: url(../images/login_bg.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% 100%;
+    min-height: 520px;
+}
+
+.login-box{
+    width: 820px;
+    height: 520px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin:-260px  0 0  -410px;
+    background: #f3f3f3;
+    overflow: hidden;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 5px 15px rgba(0,0,0,.5);
+    box-shadow: 0 5px 15px rgba(0,0,0,.5);
+}
+.login-box .bg{
+    width: 350px;
+    height: 520px;
+    float: left;
+    background: url(../images/login_bg2.png) no-repeat right center;
+}
+.login-box h3{
+    text-align: center;
+    line-height: 100px;
+    margin-bottom: 20px;
+}
+.login-box .form-horizontal{
+    float: right;
+    width: 370px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-right: 50px;
+}
+.login-box .form-horizontal input{
+        height: 40px;
+        border-color: #b9c9d6;
+        box-shadow: none;
+}
+.login-box .form-horizontal .form-group div{
+    padding: 0;
+}
+.login-box .form-horizontal .form-group img{
+    margin-left: -2px;
+    margin-right: 15px;
+}
+
+
+.form-group  .form-control{
+    width: 100%;
+}
+.col-sm-9 {
+    width: 75%;
+    float: left;
+}
+.col-sm-3 {
+    width: 25%;float: left;
+}
+
+
