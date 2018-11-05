@@ -3,34 +3,30 @@ $CI = & get_instance();
 $CI->load->model('m_admin');
 
 $tree = array(
-	array('name'=>'场馆管理','controller'=>'site','href_url'=>'/site/index','children'=>array()),
-	array('name'=>'课程管理','controller'=>'lesson','href_url'=>'/lesson/index','children'=>array()),
-	array('name'=>'精练计划','controller'=>'plan','href_url'=>'/plan/index','children'=>array()),
-    array('name'=>'老师管理','controller'=>'teacher','href_url'=>'/teacher/index','children'=>array()),
-	array('name'=>'固定排课','controller'=>'course','href_url'=>'/course/index','children'=>array()),
-	array('name'=>'自选排课','controller'=>'teacherCourse','href_url'=>'/teacherCourse/index','children'=>array()),
+	array('name'=>'首页设置管理','controller'=>'sethome','href_url'=>'/sethome/index','children'=>array(
+			array('name'=>'品牌专访','controller'=>'sethome','href_url'=>'/sethome/brand_index'),
+			array('name'=>'广告管理','controller'=>'ad','href_url'=>'/ad/index'),
+			
+			)),
+	)),
+	array('name'=>'广告管理','controller'=>'ad','href_url'=>'/ad/index','children'=>array()),
+	array('name'=>'分类管理','controller'=>'category','href_url'=>'/category/index','children'=>array()),
+	array('name'=>'品牌管理','controller'=>'brand','href_url'=>'/brand/index','children'=>array()),
+    array('name'=>'文章管理','controller'=>'article','href_url'=>'/teacher/index','children'=>array()),
+	array('name'=>'活动管理','controller'=>'course','href_url'=>'/course/index','children'=>array()),
+	array('name'=>'评论管理','controller'=>'comment','href_url'=>'/comment/index','children'=>array()),
+	
 	array('name'=>'用户管理','controller'=>'webuser','href_url'=>'/webuser/index','children'=>array()),
-	array('name'=>'订单管理','controller'=>'order','href_url'=>'/order/index','children'=>array(
-		array('name'=>'约课订单','controller'=>'order','href_url'=>'/order/index'),
-		array('name'=>'计划订单','controller'=>'orderPlan','href_url'=>'/orderPlan/index'),
-		)),
-	array('name'=>'营销管理','controller'=>'yingxiao','href_url'=>'','children'=>array(
-		array('name'=>'优惠券管理','controller'=>'bonus','href_url'=>'/bonus/index'),
-		array('name'=>'广告管理','controller'=>'ad','href_url'=>'/ad/index'),
-		array('name'=>'幸运大转盘','controller'=>'activity','href_url'=>'/activity/index'),
-		array('name'=>'关于我们','controller'=>'infomation','href_url'=>'/infomation/listAction')
-		)),
-  
-	);
+	
+	array('name'=>'后台用户管理','controller'=>'user','href_url'=>'/user/index','children'=>array()),
+	
 
 
 $uriParam = parse_url($_SERVER['REQUEST_URI']);
-// $select = $uriParam['path'];
+
 
 $select = $this->uri->segment(1);
-// if ($select=='bonus'||$select=='ad'||$select=='infomation') {
-// 	$select = 'yingxiao';
-// }
+
 
 
 
