@@ -12,8 +12,8 @@ $tree = array(
 	array('name'=>'广告管理','controller'=>'ad','href_url'=>'/ad/index','children'=>array()),
 	array('name'=>'分类管理','controller'=>'category','href_url'=>'/category/index','children'=>array()),
 	array('name'=>'品牌管理','controller'=>'brand','href_url'=>'/brand/index','children'=>array()),
-    array('name'=>'文章管理','controller'=>'article','href_url'=>'/teacher/index','children'=>array()),
-	array('name'=>'活动管理','controller'=>'course','href_url'=>'/course/index','children'=>array()),
+    array('name'=>'文章管理','controller'=>'infomation','href_url'=>'/infomation/index','children'=>array()),
+	array('name'=>'活动管理','controller'=>'news','href_url'=>'/news/index','children'=>array()),
 	array('name'=>'评论管理','controller'=>'comment','href_url'=>'/comment/index','children'=>array()),
 	
 	array('name'=>'用户管理','controller'=>'webuser','href_url'=>'/webuser/index','children'=>array()),
