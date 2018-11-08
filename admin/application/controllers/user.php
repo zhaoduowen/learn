@@ -57,7 +57,7 @@ class User extends MY_Controller {
              // $this->returnJson(203,'图文验证码错误');
          }
 
-        $sql = "SELECT a.* from admin_master a  where   a.state=1 and (a.mobile=? or a.username=?)";
+        $sql = "SELECT a.* from admin_master a  where   a.status=1 and (a.mobile=? or a.username=?)";
         $user = $this->db->query($sql,array($username,$username))->row_array();
        
         if (!isset($user['username'])){
@@ -69,18 +69,18 @@ class User extends MY_Controller {
             
 
         $apikey = md5($user['id'] . time());
-        $_SESSION['yoyoga_uid'] = $user['id'];
-        $_SESSION['yoyoga_username'] = $user['username'];
-        $_SESSION['yoyoga_apikey'] = $apikey;
+        $_SESSION['zhimei_uid'] = $user['id'];
+        $_SESSION['zhimei_username'] = $user['username'];
+        $_SESSION['zhimei_apikey'] = $apikey;
        
         if ($remember==1) {
-            setcookie('yoyoga_remember', $remember, time()+3600*24*7,'/');
-            setcookie('yoyoga_remember_username', $username, time()+3600*24*7,'/');  
-            setcookie('yoyoga_remember_password', $password, time()+3600*24*7,'/');  
+            setcookie('zhimei_remember', $remember, time()+3600*24*7,'/');
+            setcookie('zhimei_remember_username', $username, time()+3600*24*7,'/');  
+            setcookie('zhimei_remember_password', $password, time()+3600*24*7,'/');  
         }else{
-            setcookie('yoyoga_remember', $remember, time()-3600,'/');
-            setcookie('yoyoga_remember_username', $username, time()-3600,'/');  
-            setcookie('yoyoga_remember_password', $password, time()-3600,'/');  
+            setcookie('zhimei_remember', $remember, time()-3600,'/');
+            setcookie('zhimei_remember_username', $username, time()-3600,'/');  
+            setcookie('zhimei_remember_password', $password, time()-3600,'/');  
         }
 		$data = array();
         $data['info'] = $user;
@@ -94,7 +94,7 @@ class User extends MY_Controller {
 	//注销
 	public function logout() {
          // $this->m_log->insertLog(5,1,'');
-			unset($_SESSION['yoyoga_uid']);
+			unset($_SESSION['zhimei_uid']);
 			redirect('/user/login');
 
 	}
@@ -109,19 +109,19 @@ class User extends MY_Controller {
         $request['mobile'] = $_REQUEST['mobile'];
         $request['realname'] = $_REQUEST['realname'];
         $request['role_id'] = $_REQUEST['role_id'];
-        $request['state'] = $_REQUEST['state'];
+        $request['status'] = $_REQUEST['status'];
         $request['page'] = '';
         $pageUrl = site_url('/user/index') . '?' . http_build_query($request);
         $pageIndex = (int) $_REQUEST['page'] ? $_REQUEST['page'] : 1;
         $pagesize = (int) $_REQUEST['pagesize'];
         $params = array();
       
-        $condition = "state>'-1' ";
-        if ($request['state'] == '0') {
-            $condition .= " and state = '0' ";
+        $condition = "status>'-1' ";
+        if ($request['status'] == '0') {
+            $condition .= " and status = '0' ";
         }
-        if ($request['state'] == '1') {
-            $condition .= " and state = '1' ";
+        if ($request['status'] == '1') {
+            $condition .= " and status = '1' ";
         }
         if ($request['role_id']) {
             $condition .= " and role_id = '" . $request['role_id'] . "' ";
@@ -152,11 +152,11 @@ class User extends MY_Controller {
         $bpage = new BPage(self::PAGE_SIZE, $total, $pageIndex, 10, $pageUrl);
         $pagination = $bpage->showPageHtml();
 
-       	foreach ($list as $key => $value) {
-       		$role = $this->m_role->getInfoById($value['role_id']);
-       		$list[$key]['rolename'] = $role['name'];
-       	}
-		$roleList = $this->roleList;
+       	// foreach ($list as $key => $value) {
+       	// 	$role = $this->m_role->getInfoById($value['role_id']);
+       	// 	$list[$key]['rolename'] = $role['name'];
+       	// }
+		// $roleList = $this->roleList;
         $this->load->view('user/index', compact('list', 'pagination', 'request','roleList'));
     }
 
@@ -297,10 +297,10 @@ class User extends MY_Controller {
        
         $this->load->view("user/editpass", compact('info', 'roleList'));
     }
-    public function updateState() {
+    public function updatestatus() {
         
         $id = $this->input->post("id");
-        $state= $this->input->post("state");
+        $status= $this->input->post("status");
         $info = $this->m_admin->getInfoById($id);
         $res = array();
         if (empty($info)) {
@@ -310,7 +310,7 @@ class User extends MY_Controller {
         }
 
         
-        $rs = $this->m_admin->updateByWhere(array('id' =>$id) , array('state'=>$state));
+        $rs = $this->m_admin->updateByWhere(array('id' =>$id) , array('status'=>$status));
 
         if ($rs) {
             $res['success'] = 1;
@@ -329,7 +329,7 @@ class User extends MY_Controller {
        $username = $_POST['username'];
        $password = $_POST['password'];
        $confirm_pass = $_POST['confirm_pass'];
-       $sql = "SELECT * FROM admin_master WHERE mobile = '{$username}' and state>=0";
+       $sql = "SELECT * FROM admin_master WHERE mobile = '{$username}' and status>=0";
        
         $result = $this->db->query($sql)->row_array();
         if(!$result){

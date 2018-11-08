@@ -8,7 +8,6 @@ $tree = array(
 			array('name'=>'广告管理','controller'=>'ad','href_url'=>'/ad/index'),
 			
 			)),
-	)),
 	array('name'=>'广告管理','controller'=>'ad','href_url'=>'/ad/index','children'=>array()),
 	array('name'=>'分类管理','controller'=>'category','href_url'=>'/category/index','children'=>array()),
 	array('name'=>'品牌管理','controller'=>'brand','href_url'=>'/brand/index','children'=>array()),
@@ -19,6 +18,7 @@ $tree = array(
 	array('name'=>'用户管理','controller'=>'webuser','href_url'=>'/webuser/index','children'=>array()),
 	
 	array('name'=>'后台用户管理','controller'=>'user','href_url'=>'/user/index','children'=>array()),
+);
 	
 
 

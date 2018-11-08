@@ -29,10 +29,10 @@ class MY_controller extends CI_Controller
         ){
 		}else{
 
-			if (!isset($_SESSION['yoyoga_uid']) || empty($_SESSION['yoyoga_uid'])) {
+			if (!isset($_SESSION['zhimei_uid']) || empty($_SESSION['zhimei_uid'])) {
 	            redirect('/user/login','location');exit;
 	        } 
-	        $this->loginUid = $_SESSION['yoyoga_uid'];
+	        $this->loginUid = $_SESSION['zhimei_uid'];
 	        $sql = 'SELECT a.*  from admin_master as a  where a.id=' . $this->loginUid;
 	        
 	        $userInfo = $this->db->query($sql)->row_array();

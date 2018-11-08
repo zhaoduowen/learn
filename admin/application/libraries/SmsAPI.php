@@ -5,7 +5,7 @@
  * @author duoduo
  */
 class SmsAPI {
-    const signName = '【YOYOGA】';
+    const signName = '【zhimei】';
     private $sn = 'SDK-BBX-010-25119';//'SDK-BBX-010-23355';
     private $password = 'ef(8a-62';// 'a06@0e00';
     private $pwd;

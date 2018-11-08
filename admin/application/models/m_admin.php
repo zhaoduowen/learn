@@ -26,7 +26,7 @@ class M_admin extends CI_Model {
     *@desc 检查账号是否存在
     */
     public function isExist($username,$uid='') {
-        $sql = "SELECT count(id) as count FROM ".$this->admin_table." WHERE username = '{$username}' and state>=0";
+        $sql = "SELECT count(id) as count FROM ".$this->admin_table." WHERE username = '{$username}' and status>=0";
         if (!empty($uid)) {
             $sql .= " and id != ".$uid;
         }
@@ -42,7 +42,7 @@ class M_admin extends CI_Model {
     *@desc 手机号是否存在
     **/
     public function isExistMoible($username,$uid='') {
-        $sql = "SELECT count(id) as count FROM ".$this->admin_table." WHERE mobile = '{$username}' and state>=0";
+        $sql = "SELECT count(id) as count FROM ".$this->admin_table." WHERE mobile = '{$username}' and status>=0";
         if (!empty($uid)) {
             $sql .= " and id != ".$uid;
         }
@@ -61,12 +61,12 @@ class M_admin extends CI_Model {
     }
 
     public function getPermission(){
-        $loginUid = $_SESSION['yoyoga_uid'];
+        $loginUid = $_SESSION['zhimei_uid'];
         if(empty($loginUid)){return array();}
         $userInfo = $this->getInfoById($loginUid);
         if ($userInfo && !empty($userInfo['menu_id'])) {
             $leftMenuIds = json_decode($userInfo['menu_id'],true);
-            $this->db->where(array('is_show'=>1,'state'=>1, 'type' => 1));
+            $this->db->where(array('is_show'=>1,'status'=>1, 'type' => 1));
             $this->db->where_in('id',$leftMenuIds);
             $leftMenu = $this->db->get('jz_oper_menu')->result_array();
             $tree = $this->getTree($leftMenu, 0);

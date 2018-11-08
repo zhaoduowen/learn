@@ -52,6 +52,14 @@ $db['default']['hostname'] = '127.0.0.1:3306';
 $db['default']['username'] = 'root';
 $db['default']['password'] = '123456';
 $db['default']['database'] = 'test';
+
+// $db['default']['hostname'] = 'admin.yowang.cn:3306';
+// $db['default']['hostname'] = '202.182.111.229:3306';
+// $db['default']['username'] = 'user2018';
+// $db['default']['password'] = 'ITutopia12345!';
+// $db['default']['database'] = 'utopia';
+   !
+
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = FALSE;

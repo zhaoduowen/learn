@@ -40,8 +40,8 @@
 				<h4 class="pull-left">后台管理系统</h4>
 				<div class="login pull-right">
 					<h4 class="">
-						<span><?php echo $_SESSION['yoyoga_username'];?></span>&emsp;&emsp;
- 						<a class="" href="/user/editpass?id=<?php echo $_SESSION['yoyoga_uid'];?>">修改密码</a>&nbsp;&nbsp;
+						<span><?php echo $_SESSION['zhimei_username'];?></span>&emsp;&emsp;
+ 						<a class="" href="/user/editpass?id=<?php echo $_SESSION['zhimei_uid'];?>">修改密码</a>&nbsp;&nbsp;
 						<a class="" href="/user/logout">退出登录</a>
 					 </h4>
 					</div>

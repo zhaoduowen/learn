@@ -38,13 +38,13 @@
 
             <h3>登录</h3>
           <div class="form-group">
-              <input type="input" class="form-control" id="username" placeholder="账号" value="<?php if($_COOKIE['yoyoga_remember']==1): echo $_COOKIE['yoyoga_remember_username'];endif;?>">
+              <input type="input" class="form-control" id="username" placeholder="账号" value="<?php if($_COOKIE['zhimei_remember']==1): echo $_COOKIE['zhimei_remember_username'];endif;?>">
           </div>
           <div class="form-group">
-              <input type="password" class="form-control" id="password" placeholder="密码" value="<?php if($_COOKIE['yoyoga_remember']==1): echo $_COOKIE['yoyoga_remember_password'];endif;?>">
+              <input type="password" class="form-control" id="password" placeholder="密码" value="<?php if($_COOKIE['zhimei_remember']==1): echo $_COOKIE['zhimei_remember_password'];endif;?>">
               
             <div class="col-sm-9"> <label class="checkbox-inline">
-                 <input type="checkbox" class="checkbox" name="remember" id="remember" value="1" <?php if($_COOKIE['yoyoga_remember']==1): echo 'checked';endif;?> style="height:15px;"><span style="margin-left:5px;">记住密码</span><a href="/user/findpass" style=" margin-left:30px;color: #f97e29;">忘记密码？</a>
+                 <input type="checkbox" class="checkbox" name="remember" id="remember" value="1" <?php if($_COOKIE['zhimei_remember']==1): echo 'checked';endif;?> style="height:15px;"><span style="margin-left:5px;">记住密码</span><a href="/user/findpass" style=" margin-left:30px;color: #f97e29;">忘记密码？</a>
                                
                 </label>
                              

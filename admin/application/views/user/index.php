@@ -91,7 +91,7 @@
                                             <a href="javascript:void(0)" onclick="updateState(<?php echo $v['id'];?>,1)" class="text-warning">启用</a>&emsp;
                                             <?php }?>
                                             <a href="javascript:void(0)" onclick="updateState(<?php echo $v['id'];?>,-1)" lass="text-danger">删除</a>&emsp;
-                                            <?php if ($v['id']==$_SESSION['yoyoga_uid']) {?>
+                                            <?php if ($v['id']==$_SESSION['zhimei_uid']) {?>
                                                <a href="/user/editpass?id=<?php echo $v['id'];?>" class="successbutton">密码</a>
                                              <?php }?>
                                             
