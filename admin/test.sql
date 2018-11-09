@@ -11,7 +11,7 @@
  Target Server Version : 50714
  File Encoding         : 65001
 
- Date: 09/11/2018 18:04:57
+ Date: 09/11/2018 18:28:08
 */
 
 SET NAMES utf8mb4;
@@ -121,6 +121,11 @@ CREATE TABLE `ad_position`  (
   `update_time` datetime(0) DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`position_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '广告位表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of ad_position
+-- ----------------------------
+INSERT INTO `ad_position` VALUES (1, '首页', 1, '2018-11-09 18:05:28', NULL);
 
 -- ----------------------------
 -- Table structure for admin_master
