@@ -47,5 +47,6 @@ define("DEBUG",                         TRUE);  //调试模式 -- 控制调试�
 define("SMS_DEBUG",                     TRUE);  //短信调试模式，不发送，验证码都为1;FALSE正式，开发TRUE
 
 define('W_STATIC_URL',  	BASE_URL . 'public/'); 
-define('G_IMAGE_DOMAIN', 'http://yostatic.demo.shuzitansuo.com/upload');             //上传图片域名   
+define('G_UPLOAD', dirname(dirname(__FILE__)).'/../upload');             //图片保存路径   
+define('G_IMAGE_DOMAIN', 'http://admin.yowang.cn/upload');             //上传图片域名   
 define('LOG_ADDRESS', 		    'application/logs');	//LOG日志的保存地址

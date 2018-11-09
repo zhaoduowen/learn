@@ -7,7 +7,17 @@
             </ol>
 
             <form class="form-horizontal">
-            <input type="hidden" value="" id="ad_strength">
+             <div class="form-group">
+                        <label for="" class="col-sm-2 control-label"><span class="text-red">*</span>广告位</label>
+                        <div class="col-sm-9">
+                        <select class="form-control" id="position_id" >
+                            <option value="">请选择</option>
+                            <?php foreach ($positionArr as $key => $value) {?>
+                                <option value="<?php echo $value['position_id'];?>" <?php if($value['position_id']===$data['position_id']) echo "selected"; ?>><?php echo $value['position_name'];?></option>
+                            <?php }?>
+                        </select>
+                        </div>
+                    </div>
             
                 <div class="form-group">
                     <label for="" class="col-sm-2 control-label"><span class="text-red">*</span>广告标题</label>

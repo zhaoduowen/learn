@@ -14,8 +14,8 @@ class Ad extends MY_Controller
         $this->load->model('m_ad');
     }
     public  function add(){
-        $postionArr = $this->m_ad->getPosition();
-        $this->load->view("ad/add",compact("postionArr"));
+        $positionArr = $this->m_ad->getPosition();
+        $this->load->view("ad/add",compact("positionArr"));
     }
     //添加\修改
     public function addAction(){
@@ -101,8 +101,8 @@ class Ad extends MY_Controller
         //print_r($data);die;
         $bpage = new BPage(self::PAGE_SIZE, $count, $pageIndex, 10, $pageUrl);
         $pagination = $bpage->showPageHtml();
-        $postionArr = $this->m_ad->getPosition();
-        $this->load->view('ad/index', compact('where','postionArr', 'data', 'pagination'));
+        $positionArr = $this->m_ad->getPosition();
+        $this->load->view('ad/index', compact('where','positionArr', 'data', 'pagination'));
     }
     //操作
     public function operation(){
@@ -122,9 +122,9 @@ class Ad extends MY_Controller
         $id = $this->input->get_post("ad_id");
         $data= $this->m_ad->getRow(array('ad_id'=>$id));
 
-        $postionArr = $this->m_ad->getPosition();
+        $positionArr = $this->m_ad->getPosition();
         // $adPic = $this->m_ad->getAdPic($id);
         // $data['adPic'] = $adPic;
-        $this->load->view("ad/modify",compact('data','postionArr'));
+        $this->load->view("ad/modify",compact('data','positionArr'));
     }
 }
