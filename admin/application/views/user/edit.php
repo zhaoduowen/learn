@@ -31,7 +31,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
+                  <!--   <div class="form-group">
                         <label for="" class="col-sm-2 control-label">账号角色：</label>
                         <div class="col-sm-9">
                         <?php foreach ($roleList as $key => $value) {?>
@@ -43,16 +43,16 @@
 
                         </div>
                     </div> 
-
+ -->
                     <div class="form-group">
                         <label for="" class="col-sm-2 control-label">账号状态：</label>
                         <div class="col-sm-9">
                             <label class="radio-inline">
-                                <input type="radio" name="JzOperAdmin[state]" value="1"  <?php if($info['state']==1){?> checked="checked" <?php }?>> 激活
+                                <input type="radio" name="JzOperAdmin[status]" value="1"  <?php if($info['status']==1){?> checked="checked" <?php }?>> 激活
                             </label>
 
                             <label class="radio-inline">
-                                <input type="radio" name="JzOperAdmin[state]" value="0"  <?php if($info['state']==0){?> checked="checked" <?php }?>> 停用  
+                                <input type="radio" name="JzOperAdmin[status]" value="0"  <?php if($info['status']==0){?> checked="checked" <?php }?>> 停用  
                             </label>
                              
 
@@ -125,10 +125,10 @@ if(error){
             showError('账号密码不能为空');
             return false;
         }
-        if (role_id == undefined) {
-            showError('请选择账号角色');
-            return false;
-        }
+        // if (role_id == undefined) {
+        //     showError('请选择账号角色');
+        //     return false;
+        // }
         
     }
 

@@ -27,7 +27,7 @@
                     </div>
                     <div class="db"></div>
                     <div class="form-inline">
-                        <div class="form-group">
+                       <!--  <div class="form-group">
                             <label class="" for="">账号角色 </label>
                             <select class="form-control" name="role_id" id="">
                                 <option value="">全部</option>
@@ -36,13 +36,13 @@
                                 <?php }?>
                             </select>
                              
-                        </div>
+                        </div> -->
                         <div class="form-group">
                             <label class="" for="">账号状态 </label>
-                            <select class="form-control" name="state" id="">
+                            <select class="form-control" name="status" id="">
                                 <option value="">全部</option>
-                                <option value="1" <?php if('1'==$request['state']) echo "selected"; ?>>激活</option>
-                                <option value="0" <?php if('0'==$request['state']) echo "selected"; ?>>停用</option>
+                                <option value="1" <?php if('1'==$request['status']) echo "selected"; ?>>激活</option>
+                                <option value="0" <?php if('0'==$request['status']) echo "selected"; ?>>停用</option>
                             </select>
                         </div>
                          <button class="btn btn-primary" type="submit">查询</button>
@@ -56,7 +56,7 @@
                                 <th>账号名称</th>
                                 <th>真实姓名</th>
                                 <th>手机号码</th>
-                                <th>账号角色</th>
+                                <!-- <th>账号角色</th> -->
                                 <th>账号状态</th>
                                 <th>管理</th>
                                  
@@ -73,10 +73,10 @@
                                         <td><?php echo $v['realname'];?></td>
                                         <td><?php echo $v['mobile'];?></td>
                                        
-                                        <td><?php echo $v['rolename'];?></td>
-                                        <td><?php if ($v['state'] == '1') {
+                                        <!-- <td><?php echo $v['rolename'];?></td> -->
+                                        <td><?php if ($v['status'] == '1') {
                                             echo "激活";
-                                        } elseif ($v['state'] == '0') {
+                                        } elseif ($v['status'] == '0') {
                                             echo "停用";
                                         } else {
                                             echo "其他";
@@ -84,13 +84,13 @@
                                        
                                         <td>
                                             <a  class="successbutton" href="/user/edit?id=<?php echo $v['id'];?>">修改</a>&emsp;
-                                            <?php if ($v['state'] == '1') {?>
-                                            <a href="javascript:void(0)" onclick="updateState(<?php echo $v['id'];?>,0)" class="text-warning">锁定</a>&emsp;
+                                            <?php if ($v['status'] == '1') {?>
+                                            <a href="javascript:void(0)" onclick="updatestatus(<?php echo $v['id'];?>,0)" class="text-warning">锁定</a>&emsp;
                                             <?php }?>
-                                            <?php if ($v['state'] == '0') {?>
-                                            <a href="javascript:void(0)" onclick="updateState(<?php echo $v['id'];?>,1)" class="text-warning">启用</a>&emsp;
+                                            <?php if ($v['status'] == '0') {?>
+                                            <a href="javascript:void(0)" onclick="updatestatus(<?php echo $v['id'];?>,1)" class="text-warning">启用</a>&emsp;
                                             <?php }?>
-                                            <a href="javascript:void(0)" onclick="updateState(<?php echo $v['id'];?>,-1)" lass="text-danger">删除</a>&emsp;
+                                            <a href="javascript:void(0)" onclick="updatestatus(<?php echo $v['id'];?>,-1)" lass="text-danger">删除</a>&emsp;
                                             <?php if ($v['id']==$_SESSION['zhimei_uid']) {?>
                                                <a href="/user/editpass?id=<?php echo $v['id'];?>" class="successbutton">密码</a>
                                              <?php }?>
@@ -118,12 +118,12 @@
     
 
 <script>
-function updateState(id,state){
+function updatestatus(id,status){
   if (!confirm('你确定要进行此操作吗？')) {return false;};  
   $.ajax({
     type:'post',
-    url:"/user/updateState",
-    data:{'id':id,'state':state},
+    url:"/user/updatestatus",
+    data:{'id':id,'status':status},
     dataType:'json',
     success:function(rs){
       if(rs.success==1)

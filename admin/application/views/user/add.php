@@ -36,7 +36,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
+                   <!--  <div class="form-group">
                         <label for="" class="col-sm-2 control-label">账号角色：</label>
                         <div class="col-sm-9">
                         <?php foreach ($roleList as $key => $value) {?>
@@ -47,17 +47,17 @@
                            
 
                         </div>
-                    </div> 
+                    </div>  -->
 
                     <div class="form-group">
                         <label for="" class="col-sm-2 control-label">账号状态：</label>
                         <div class="col-sm-9">
                             <label class="radio-inline">
-                                <input type="radio" name="JzOperAdmin[state]" value="1" checked="checked"> 激活
+                                <input type="radio" name="JzOperAdmin[status]" value="1" checked="checked"> 激活
                             </label>
 
                             <label class="radio-inline">
-                                <input type="radio" name="JzOperAdmin[state]" value="0"> 停用  
+                                <input type="radio" name="JzOperAdmin[status]" value="0"> 停用  
                             </label>
                              
 
@@ -128,10 +128,10 @@ if(error){
             showError('账号密码不能为空');
             return false;
         }
-        if (role_id == undefined) {
-            showError('请选择账号角色');
-            return false;
-        }
+        // if (role_id == undefined) {
+        //     showError('请选择账号角色');
+        //     return false;
+        // }
 
         $.ajax({
             url: '/user/add',
@@ -142,7 +142,7 @@ if(error){
             if(data.status == 1) {
                 location.href="/user/index"
             } else {
-                showError(data.mes);
+                showError(data.msg);
                
                 return false;
             }

@@ -56,7 +56,7 @@
                     <label for="" class="col-sm-2 control-label"><span class="text-red">*</span>排序号</label>
 
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" placeholder="排序号" id="sortNum" >
+                        <input type="text" class="form-control" placeholder="排序号" id="ordernNum" >
                     </div>
                 </div>
                 <div class="form-group">

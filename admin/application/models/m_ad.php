@@ -40,7 +40,7 @@ class M_ad extends Base_Model
             return $count['count'];
         }
         if($type == 1){
-            $sql .= " order by sort asc  limit {$limit},{$offset}";
+            $sql .= " order by ordern asc  limit {$limit},{$offset}";
             $data = $this->db->query($sql)->result_array();
            
             return $data;

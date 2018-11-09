@@ -57,7 +57,7 @@
                 <tbody>
                 <?php foreach ($data as $item) { ?>
                     <tr>
-                        <td><?php echo $item['sort']; ?></td>
+                        <td><?php echo $item['ordern']; ?></td>
                         <td><?php echo $postionArr[$item['postion_id']]; ?></td>
                         <td><?php echo $item['title']; ?></td>
                         <td><img width="50px" height="50px;" src="<?php echo G_IMAGE_DOMAIN.$item['ad_pic']; ?>"></td>

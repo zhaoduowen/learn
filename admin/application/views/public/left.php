@@ -17,7 +17,7 @@ $tree = array(
 	
 	array('name'=>'用户管理','controller'=>'webuser','href_url'=>'/webuser/index','children'=>array()),
 	
-	array('name'=>'后台用户管理','controller'=>'user','href_url'=>'/user/index','children'=>array()),
+	array('name'=>'后台权限管理','controller'=>'user','href_url'=>'/user/index','children'=>array()),
 );
 	
 

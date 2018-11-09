@@ -161,12 +161,17 @@ class User extends MY_Controller {
     }
 
     public function add() {
-        $roleList = $this->roleList;
+        // $roleList = $this->roleList;
        $error = '';
        $json = $this->input->post('json');
        if($json==1){
 
-           if (isset($_POST['JzOperAdmin']['password']) and strlen($_POST['JzOperAdmin']['username']) and strlen($_POST['JzOperAdmin']['password']) and strlen($_POST['JzOperAdmin']['realname']) and strlen($_POST['JzOperAdmin']['role_id'])) {
+           if (isset($_POST['JzOperAdmin']['password']) 
+            and strlen($_POST['JzOperAdmin']['username']) 
+            and strlen($_POST['JzOperAdmin']['password']) 
+            // and strlen($_POST['JzOperAdmin']['realname'])
+            // and strlen($_POST['JzOperAdmin']['role_id'])
+         ) {
                 $password = $_POST['JzOperAdmin']['password'];
                 $_POST['JzOperAdmin']['password'] =  md5($password);
 
@@ -204,7 +209,7 @@ class User extends MY_Controller {
 
                 $_POST['JzOperAdmin']['create_time'] = date("Y-m-d H:i:s");
                 $_POST['JzOperAdmin']['update_time'] = date("Y-m-d H:i:s");
-                $_POST['JzOperAdmin']['updatepass_time'] = date("Y-m-d H:i:s");
+                // $_POST['JzOperAdmin']['updatepass_time'] = date("Y-m-d H:i:s");
                  $rs = $this->db->insert('admin_master',$_POST['JzOperAdmin']);
             
                 if ($rs) {
@@ -230,7 +235,7 @@ class User extends MY_Controller {
     public function edit() {
         $error = '';
         $id = $this->input->get("id");
-        $info = $this->m_admin->getInfoById($id);
+        $info = $this->m_admin->getRow(array('id'=>$id));
 
         if (isset($_POST['JzOperAdmin'])) {
 
@@ -266,7 +271,8 @@ class User extends MY_Controller {
     public function editpass() {
          header("Content-type: text/html; charset=utf-8"); 
         $id = $this->input->get("id");
-        $info = $this->m_admin->getInfoById($id);
+        // $info = $this->m_admin->getInfoById($id);
+        $info = $this->m_admin->getRow(array('id'=>$id));
 
         if (isset($_POST['password']) && !empty($_POST['password'])) {
         	$password = $_POST['password'];
@@ -301,7 +307,9 @@ class User extends MY_Controller {
         
         $id = $this->input->post("id");
         $status= $this->input->post("status");
-        $info = $this->m_admin->getInfoById($id);
+        // $info = $this->m_admin->getInfoById($id);
+        $info = $this->m_admin->getRow(array('id'=>$id));
+
         $res = array();
         if (empty($info)) {
             $res['success'] = '0';

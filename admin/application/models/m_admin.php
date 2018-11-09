@@ -1,12 +1,12 @@
 <?php
 //后台用户中心相关model
-class M_admin extends CI_Model {
+require_once APPPATH.'module/base_Model.php';
+class M_admin extends Base_Model {
     
-    private $admin_table = 'admin_master';
 	public function __construct()
 	{
 		$this->load->database();
-		parent::__construct();
+		$this->table = "admin_master";
 	}
 
     /*     * *
@@ -26,7 +26,7 @@ class M_admin extends CI_Model {
     *@desc 检查账号是否存在
     */
     public function isExist($username,$uid='') {
-        $sql = "SELECT count(id) as count FROM ".$this->admin_table." WHERE username = '{$username}' and status>=0";
+        $sql = "SELECT count(id) as count FROM ".$this->table." WHERE username = '{$username}' and status>=0";
         if (!empty($uid)) {
             $sql .= " and id != ".$uid;
         }
@@ -42,7 +42,7 @@ class M_admin extends CI_Model {
     *@desc 手机号是否存在
     **/
     public function isExistMoible($username,$uid='') {
-        $sql = "SELECT count(id) as count FROM ".$this->admin_table." WHERE mobile = '{$username}' and status>=0";
+        $sql = "SELECT count(id) as count FROM ".$this->table." WHERE mobile = '{$username}' and status>=0";
         if (!empty($uid)) {
             $sql .= " and id != ".$uid;
         }
@@ -57,7 +57,7 @@ class M_admin extends CI_Model {
     public function updateByWhere($where = array(),$data = array()){
         
         
-        return $this->db->update($this->admin_table,$data,$where);
+        return $this->db->update($this->table,$data,$where);
     }
 
     public function getPermission(){
@@ -90,9 +90,7 @@ class M_admin extends CI_Model {
 
 
    public function passwordCheck($password = '',$level=1) {
-        $this->load->model('m_admin_set_config_master');
-        $config = $this->m_admin_set_config_master->getRow(array('config_id' => 4));
-        $level = $config['config_status'];
+       
         if ($level==1) {
             if (preg_match('/^(?=^.*?\d)(?=^.*?[a-z])^[0-9a-z]{6,16}$/', $password)){
                 return 1;
